@@ -1,10 +1,6 @@
-import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:school_management_provider/models/model_class/data_model.dart';
 
 class FunctionProvider with ChangeNotifier {
@@ -52,16 +48,4 @@ class FunctionProvider with ChangeNotifier {
     this.imgstring = imgstring;
     notifyListeners();
   }
-
-  // imageadd(XFile? pickImage) async {
-  //   if (pickImage == null) {
-  //     return;
-  //   } else {
-  //     final bayts = File(pickImage.path).readAsBytesSync();
-  //     imgstring = base64Encode(bayts);
-  //     // print(imgstring);
-  //     print("koooooiiiii${imgstring}");
-  //   }
-  //   notifyListeners();
-  // }
 }

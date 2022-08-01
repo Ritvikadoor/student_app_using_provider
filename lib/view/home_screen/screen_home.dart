@@ -6,7 +6,7 @@ import 'package:school_management_provider/view/add_screen/add_screen.dart';
 import 'package:school_management_provider/view/student_details/student_details_screen.dart';
 
 class ScreenHome extends StatelessWidget {
-  const ScreenHome({Key? key}) : super(key: key);
+  ScreenHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +38,10 @@ class ScreenHome extends StatelessWidget {
                       ),
                       trailing: IconButton(
                         onPressed: () {
-                          if (data.id != null) {
-                            Provider.of<FunctionProvider>(context,
-                                    listen: false)
-                                .deleteStudent(data.id!);
-                          } else {
-                            //print('halo');
-                          }
+                          showDialog(
+                              context: context,
+                              builder: (context) =>
+                                  dialogShow(context, data.id!));
                         },
                         icon: const Icon(Icons.delete),
                       ),
@@ -73,9 +70,31 @@ class ScreenHome extends StatelessWidget {
                 return ScreenAdd();
               }),
             );
+            context.read<FunctionProvider>().imgstring = '';
           },
         ),
       ),
+    );
+  }
+
+  dialogShow(BuildContext context, int id) {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Row(children: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text('OK'),
+        ),
+        TextButton(
+            onPressed: () {
+              Provider.of<FunctionProvider>(context, listen: false)
+                  .deleteStudent(id);
+              Navigator.of(context).pop();
+            },
+            child: Icon(Icons.delete))
+      ]),
     );
   }
 }

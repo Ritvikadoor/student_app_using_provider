@@ -1,12 +1,8 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:school_management_provider/controllers/providers/provider_home.dart';
-// import 'package:school_management/models/data_models.dart';
-// import 'package:school_management/provider/db_functions.dart';
 import 'package:school_management_provider/models/model_class/data_model.dart';
-// import 'package:student_management/db/db_functions.dart';
-// import 'package:student_management/model/data_model.dart';
 
 class ScreenEdit extends StatelessWidget {
   final StudentModel studentmdoel;
@@ -26,74 +22,89 @@ class ScreenEdit extends StatelessWidget {
     placeUpdateController.text = studentmdoel.place;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.black87,
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            const Center(
-                child: Text(
-              'EDIT',
-              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-            )),
-            CircleAvatar(
-              radius: 40,
-              child: FunctionProvider().imgstring.trim().isEmpty
-                  ? CircleAvatar(
-                      radius: 50,
-                      backgroundImage: MemoryImage(
-                        const Base64Decoder().convert(studentmdoel.imgstri),
-                      ),
-                    )
-                  : Container(
-                      color: Colors.white,
+        child: Consumer<FunctionProvider>(
+          builder: (context, value, child) {
+            return ListView(
+              children: [
+                const SizedBox(
+                  height: 30,
+                ),
+                const Center(
+                    child: Text(
+                  'EDIT',
+                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+                )),
+                CircleAvatar(
+                  radius: 80,
+                  child: FunctionProvider().imgstring.trim().isEmpty
+                      ? CircleAvatar(
+                          radius: 80,
+                          backgroundImage: MemoryImage(
+                            const Base64Decoder().convert(studentmdoel.imgstri),
+                          ),
+                        )
+                      : Container(
+                          color: Colors.white,
+                        ),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                TextFormField(
+                  // initialValue: '$namee',
+                  controller: nameUpdateController,
+                  decoration:
+                      const InputDecoration(border: OutlineInputBorder()),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  // initialValue: '$agee',
+                  controller: ageUpdateController,
+                  decoration:
+                      const InputDecoration(border: OutlineInputBorder()),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  // initialValue: '$phonee',
+                  controller: phoneUpdateController,
+                  decoration:
+                      const InputDecoration(border: OutlineInputBorder()),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  // initialValue: '$placee',
+                  controller: placeUpdateController,
+                  decoration:
+                      const InputDecoration(border: OutlineInputBorder()),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.black87),
                     ),
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-            TextFormField(
-              // initialValue: '$namee',
-              controller: nameUpdateController,
-              decoration: const InputDecoration(border: OutlineInputBorder()),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              // initialValue: '$agee',
-              controller: ageUpdateController,
-              decoration: const InputDecoration(border: OutlineInputBorder()),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              // initialValue: '$phonee',
-              controller: phoneUpdateController,
-              decoration: const InputDecoration(border: OutlineInputBorder()),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              // initialValue: '$placee',
-              controller: placeUpdateController,
-              decoration: const InputDecoration(border: OutlineInputBorder()),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  updateStudent();
-                },
-                child: const Text('Update'))
-          ],
+                    onPressed: () {
+                      updateStudent();
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('Update'))
+              ],
+            );
+          },
         ),
       )),
     );

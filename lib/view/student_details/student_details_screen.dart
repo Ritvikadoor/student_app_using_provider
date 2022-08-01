@@ -1,15 +1,9 @@
 import 'dart:convert';
-
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:school_management_provider/controllers/providers/provider_home.dart';
-// import 'package:school_management/models/data_models.dart';
-// import 'package:school_management/provider/db_functions.dart';
-// import 'package:school_management/ui/edit_screen/screen_edit.dart';
 import 'package:school_management_provider/models/model_class/data_model.dart';
 import 'package:school_management_provider/view/edit_screen/edit_screen.dart';
-// import 'package:student_management/db/db_functions.dart';
-// import 'package:student_management/model/data_model.dart';
-// import 'package:student_management/screens/screen_edit.dart';
 
 class ScreenStudentDetails extends StatelessWidget {
   final StudentModel studentmodel;
@@ -47,63 +41,81 @@ class ScreenStudentDetails extends StatelessWidget {
                       ),
                     )
                   : Container(
-                      color: Colors.white,
+                      child: Image.asset(""),
                     ),
             ),
-            Center(
-              child: Text(
-                'Name : ${studentmodel.name}',
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Center(
-              child: Text(
-                'Age: ${studentmodel.age}',
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Center(
-              child: Text(
-                'Phone: ${studentmodel.phoneNumber}',
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Center(
-              child: Text(
-                'Place: ${studentmodel.place}',
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
             Padding(
-              padding: const EdgeInsets.only(left: 60, right: 60, top: 10),
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (ctx) => ScreenEdit(
-                              studentmdoel: studentmodel,
-                            )));
-                  },
-                  child: const Text('Edit')),
-            )
+              padding: const EdgeInsets.all(16.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color.fromARGB(255, 219, 219, 219),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: Text(
+                        'Name : ${studentmodel.name}',
+                        style: const TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Center(
+                      child: Text(
+                        'Age: ${studentmodel.age}',
+                        style: const TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Center(
+                      child: Text(
+                        'Phone: ${studentmodel.phoneNumber}',
+                        style: const TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Center(
+                      child: Text(
+                        'Place: ${studentmodel.place}',
+                        style: const TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 60, right: 60, top: 10),
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.black),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (ctx) => ScreenEdit(
+                                      studentmdoel: studentmodel,
+                                    )));
+                          },
+                          child: const Text('Edit')),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

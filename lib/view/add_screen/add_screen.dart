@@ -126,8 +126,6 @@ class ScreenAdd extends StatelessWidget {
                             ),
                             TextFormField(
                               validator: (value) {
-                                // import 'package:flutter/services.dart';
-
                                 if (value == null || value.isEmpty) {
                                   return 'Please enter some text';
                                 }
@@ -151,7 +149,7 @@ class ScreenAdd extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     ElevatedButton(
@@ -172,9 +170,10 @@ class ScreenAdd extends StatelessWidget {
                               content: Text('Processing Data'),
                             ),
                           );
+
+                          Navigator.of(context).pop();
                         }
                         onAddStudentButtonClicked(context);
-                        Navigator.of(context).pop();
                       },
                       child: const Text('Add Student'),
                     )
@@ -197,8 +196,6 @@ class ScreenAdd extends StatelessWidget {
 
     context.read<FunctionProvider>().imgstring = encode;
     context.read<FunctionProvider>().changeImage(encode);
-
-    // FunctionProvider().imageadd(image);
   }
 
   Future<void> takecamera(BuildContext context) async {
@@ -207,16 +204,12 @@ class ScreenAdd extends StatelessWidget {
     if (image == null) return;
 
     final imageTemprary = File(image.path);
-    // setState(() {
-    //   imagefile = imageTemprary;
-    // })
+
     final bayts = File(image.path).readAsBytesSync();
     String encode = base64Encode(bayts);
 
-    context.read<FunctionProvider>().imgstring = base64Encode(bayts);
+    context.read<FunctionProvider>().imgstring = encode;
     context.read<FunctionProvider>().changeImage(encode);
-    // print(imgstring);
-    // FunctionProvider().imageadd(image);
   }
 
   Future<void> showBottomSheet(BuildContext context) async {
@@ -254,18 +247,18 @@ class ScreenAdd extends StatelessWidget {
     return Consumer<FunctionProvider>(
       builder: (context, value, child) => Stack(
         children: [
-          value.imgstring.trim().isNotEmpty
-              ? Image.memory(
-                  Base64Decoder().convert(value.imgstring),
-                  width: 250,
-                  height: 250,
-                  fit: BoxFit.cover,
-                )
-              : Image.asset(
+          value.imgstring.trim().isEmpty
+              ? Image.asset(
                   "lib/res/images/add_screen_profile_pic.webp",
                   fit: BoxFit.contain,
                   height: 250,
                   width: 250,
+                )
+              : Image.memory(
+                  Base64Decoder().convert(value.imgstring),
+                  width: 250,
+                  height: 250,
+                  fit: BoxFit.cover,
                 ),
           Positioned(
             left: 50,
@@ -293,7 +286,7 @@ class ScreenAdd extends StatelessWidget {
     final age = _ageController.text;
     final phoneNumber = _phoneNumberController.text;
     final place = _placeController.text;
-    // final imgstri = _picker;
+    final imgstri = _picker;
     if (name.isEmpty || age.isEmpty || phoneNumber.isEmpty || place.isEmpty) {
       return;
     } else {
@@ -303,11 +296,6 @@ class ScreenAdd extends StatelessWidget {
           phoneNumber: phoneNumber,
           place: place,
           imgstri: context.read<FunctionProvider>().imgstring);
-      // print(FunctionProvider().imgstring);
-      // print();
-      // takePhoto();
-
-      //FunctionProvider().getallStudents;
 
       context.read<FunctionProvider>().addStudent(_student);
     }

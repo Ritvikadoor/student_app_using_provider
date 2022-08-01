@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       create: (BuildContext context) {
         return FunctionProvider();
       },
-      child: const MaterialApp(
+      child: MaterialApp(
         home: ScreenHome(),
       ),
     );
