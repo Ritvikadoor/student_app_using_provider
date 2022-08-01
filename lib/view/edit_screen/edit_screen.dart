@@ -49,44 +49,6 @@ class ScreenEdit extends StatelessWidget {
                 Center(
                   child: ClipOval(child: imageprofile(context)),
                 ),
-                // Stack(
-                //   children: [
-                //     value.imgstring.trim().isEmpty
-                //         ? Image.asset(
-                //             "lib/res/images/add_screen_profile_pic.webp",
-                //             fit: BoxFit.contain,
-                //             height: 250,
-                //             width: 250,
-                //           )
-                //         : Image.memory(
-                //             const Base64Decoder().convert(value.imgstring),
-                //             width: 250,
-                //             height: 250,
-                //             fit: BoxFit.cover,
-                //           ),
-                //     Positioned(
-                //       left: 50,
-                //       right: 50,
-                //       top: 170,
-                //       bottom: 0,
-                //       // padding: const EdgeInsets.only(top: 150, left: 150),
-                //       child: IconButton(
-                //           onPressed: () {
-                //             showBottomSheet(
-                //                 context: context,
-                //                 builder: (BuildContext context) {
-                //                   return Text('hey');
-                //                 });
-                //           },
-                //           icon: const Icon(
-                //             Icons.camera_alt,
-                //             color: Colors.black,
-                //             size: 40,
-                //           )),
-                //     )
-                //   ],
-                // ),
-
                 const SizedBox(
                   height: 60,
                 ),
@@ -170,7 +132,6 @@ class ScreenEdit extends StatelessWidget {
             right: 50,
             top: 110,
             bottom: 0,
-            // padding: const EdgeInsets.only(top: 150, left: 150),
             child: IconButton(
                 onPressed: () {
                   showBottomSheet(context);
@@ -183,39 +144,6 @@ class ScreenEdit extends StatelessWidget {
           )
         ],
       ),
-      // builder: (context, value, child) => Stack(
-      //   children: [
-      //     value.imgstring.trim().isNotEmpty
-      // ? CircleAvatar(
-      //     radius: 50,
-      //     backgroundImage: MemoryImage(
-      //       const Base64Decoder().convert(value.imgstring),
-      //     ),
-      //   )
-      // : CircleAvatar(
-      //     radius: 50,
-      //     backgroundImage: MemoryImage(
-      //       const Base64Decoder().convert(studentmdoel.imgstri),
-      //     ),
-      //   ),
-      //     Positioned(
-      //       left: 50,
-      //       right: 50,
-      //       top: 170,
-      //       bottom: 0,
-      //       // padding: const EdgeInsets.only(top: 150, left: 150),
-      //       child: IconButton(
-      //           onPressed: () {
-      //             showBottomSheet(context);
-      //           },
-      //           icon: const Icon(
-      //             Icons.camera_alt,
-      //             color: Colors.black,
-      //             size: 40,
-      //           )),
-      //     )
-      //   ],
-      // ),
     );
   }
 
