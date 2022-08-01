@@ -61,7 +61,7 @@ class ScreenAdd extends StatelessWidget {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 219, 219, 219),
+                          color: const Color.fromARGB(255, 219, 219, 219),
                           borderRadius: BorderRadius.circular(10)),
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -255,7 +255,7 @@ class ScreenAdd extends StatelessWidget {
                   width: 250,
                 )
               : Image.memory(
-                  Base64Decoder().convert(value.imgstring),
+                  const Base64Decoder().convert(value.imgstring),
                   width: 250,
                   height: 250,
                   fit: BoxFit.cover,
