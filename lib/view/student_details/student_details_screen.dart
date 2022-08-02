@@ -40,20 +40,18 @@ class ScreenStudentDetails extends StatelessWidget {
                         const Base64Decoder().convert(studentmodel.imgstri),
                       ),
                     )
-                  : Container(
-                      child: Image.asset(""),
-                    ),
+                  : Image.asset(""),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(255, 219, 219, 219),
+                  color: const Color.fromARGB(255, 219, 219, 219),
                 ),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Center(

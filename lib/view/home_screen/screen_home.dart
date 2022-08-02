@@ -11,7 +11,7 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = FunctionProvider().notifyListeners();
-    print('runnning or not check');
+    // print('runnning or not check');
     return ChangeNotifierProvider(
       create: (context) {
         FunctionProvider();
@@ -33,8 +33,8 @@ class ScreenHome extends StatelessWidget {
                       subtitle: Text(data.age),
                       leading: CircleAvatar(
                         radius: 40,
-                        backgroundImage:
-                            MemoryImage(Base64Decoder().convert(data.imgstri)),
+                        backgroundImage: MemoryImage(
+                            const Base64Decoder().convert(data.imgstri)),
                       ),
                       trailing: IconButton(
                         onPressed: () {
@@ -54,7 +54,7 @@ class ScreenHome extends StatelessWidget {
                     );
                   },
                   separatorBuilder: (ctx, index) {
-                    return Divider();
+                    return const Divider();
                   },
                   itemCount: newValue.studentlistNotifier.length);
             },
@@ -111,7 +111,7 @@ class ScreenHome extends StatelessWidget {
                           .deleteStudent(id);
                       Navigator.of(context).pop();
                     },
-                    child: Icon(
+                    child: const Icon(
                       Icons.delete,
                       color: Colors.black,
                     ))

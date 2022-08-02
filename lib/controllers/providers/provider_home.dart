@@ -15,11 +15,11 @@ class FunctionProvider with ChangeNotifier {
     value.id = _id;
     await studentDb.put(value.id, value);
     await getallStudents();
-    print('object');
+    // print('object');
   }
 
   getallStudents() async {
-    print('Getting datas');
+    // print('Getting datas');
     final studentDb = await Hive.openBox<StudentModel>('student_db');
     studentlistNotifier.clear();
     studentlistNotifier.addAll(studentDb.values.toList());
