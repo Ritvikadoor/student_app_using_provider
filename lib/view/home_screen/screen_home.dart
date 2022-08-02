@@ -80,41 +80,44 @@ class ScreenHome extends StatelessWidget {
   dialogShow(BuildContext context, int id) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Container(
-        height: 100,
-        child: Column(
-          children: [
-            Text(
-              'Do you want to delete ',
-              style: TextStyle(fontSize: 20, color: Colors.grey),
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: TextButton(
-                  child: Text(
-                    'No',
-                    style: TextStyle(color: Colors.blueGrey, fontSize: 18),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          height: 100,
+          child: Column(
+            children: [
+              const Text(
+                'Do you want to delete ',
+                style: TextStyle(fontSize: 20, color: Colors.grey),
               ),
-              TextButton(
+              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                TextButton(
                   onPressed: () {
-                    Provider.of<FunctionProvider>(context, listen: false)
-                        .deleteStudent(id);
                     Navigator.of(context).pop();
                   },
-                  child: Icon(
-                    Icons.delete,
-                    color: Colors.black,
-                  ))
-            ]),
-          ],
+                  child: TextButton(
+                    child: const Text(
+                      'No',
+                      style: TextStyle(color: Colors.blueGrey, fontSize: 18),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Provider.of<FunctionProvider>(context, listen: false)
+                          .deleteStudent(id);
+                      Navigator.of(context).pop();
+                    },
+                    child: Icon(
+                      Icons.delete,
+                      color: Colors.black,
+                    ))
+              ]),
+            ],
+          ),
         ),
       ),
     );
