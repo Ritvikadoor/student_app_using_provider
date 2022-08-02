@@ -25,8 +25,6 @@ class ScreenAdd extends StatelessWidget {
 
   final _placeController = TextEditingController();
 
-  // int? idnum;
-
   File? imagefile;
 
   final ImagePicker _picker = ImagePicker();
